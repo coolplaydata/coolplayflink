@@ -1,11 +1,12 @@
-## coolplayflink
+## CoolPlayFlink
+
 
 
 ## Pull Request流程
 
-开始我对Pull Request流程不熟悉，后来参考了[@numbbbbb](https://github.com/numbbbbb)的《The Swift Programming Language》协作流程，在此感谢。
+开始对Pull Request流程不熟悉，后来参考了[@numbbbbb](https://github.com/numbbbbb)的《The Swift Programming Language》协作流程，在此感谢。
 
-1. 首先fork我的项目
+1. 首先fork该项目
 2. 把fork过去的项目也就是你的项目clone到你的本地
 3. 运行 `git remote add coolplaydata git@github.com:coolplaydata/coolplayflink.git` 添加为远端库
 4. 运行 `git pull coolplaydata master` 拉取并合并到本地

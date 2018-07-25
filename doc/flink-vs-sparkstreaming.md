@@ -71,7 +71,6 @@ Spark Streaming与kafka的结合主要是两种模型：
     ssc.awaitTermination()
 
 ```
-
 上面的代码我们可以get到一下几点：
 * 设置批处理时间
 * 创建数据流
@@ -404,7 +403,56 @@ backpressure后面一律叫做背压。消费者消费的速度低于生产者�
 Spark Streaming 跟kafka结合使存在背压机制的。目标是这样根据当前job的处理情况，来调节后续批次的获取kafka消息的条数。为了达到这个目的Spark Streaming在原有的架构上加入了一个RateController，利用的算法是PID，需要的反馈数据是任务处理的结束时间，调度时间，处理时间，消息条数，这些数据是通过SparkListener体系获得，然后通过PIDRateEsimator的compute计算得到一个速率，进而可以计算得到一个offset，然后跟你的限速设置最大消费条数做比较得到一个最终要消费的消息条数。
 PIDRateEsimator的compute方法如下：
 ```scala
+ def compute(
+      time: Long, // in milliseconds
+      numElements: Long,
+      processingDelay: Long, // in milliseconds
+      schedulingDelay: Long // in milliseconds
+    ): Option[Double] = {
+    logTrace(s"\ntime = $time, # records = $numElements, " +
+      s"processing time = $processingDelay, scheduling delay = $schedulingDelay")
+    this.synchronized {
+      if (time > latestTime && numElements > 0 && processingDelay > 0) {
 
+        val delaySinceUpdate = (time - latestTime).toDouble / 1000
+
+        val processingRate = numElements.toDouble / processingDelay * 1000
+
+        val error = latestRate - processingRate
+
+        val historicalError = schedulingDelay.toDouble * processingRate / batchIntervalMillis
+
+        // in elements/(second ^ 2)
+        val dError = (error - latestError) / delaySinceUpdate
+
+        val newRate = (latestRate - proportional * error -
+                                    integral * historicalError -
+                                    derivative * dError).max(minRate)
+        logTrace(s"""
+            | latestRate = $latestRate, error = $error
+            | latestError = $latestError, historicalError = $historicalError
+            | delaySinceUpdate = $delaySinceUpdate, dError = $dError
+            """.stripMargin)
+
+        latestTime = time
+        if (firstRun) {
+          latestRate = processingRate
+          latestError = 0D
+          firstRun = false
+          logTrace("First run, rate estimation skipped")
+          None
+        } else {
+          latestRate = newRate
+          latestError = error
+          logTrace(s"New rate = $newRate")
+          Some(newRate)
+        }
+      } else {
+        logTrace("Rate estimation skipped")
+        None
+      }
+    }
+  }
 ```
 #### 7.2 Flink的被压
 与Spark Streaming的被压不同的是，Flink被压式jobmanager针对每一个task每50ms触发100次Thread.getStackTrace()调用，求出阻塞的占比。如下图：

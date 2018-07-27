@@ -115,7 +115,7 @@ Flink提供了一组丰富的与时间相关的特征。
 
 Flink提供三层API。 每个API在简洁性和表达性之间提供不同的权衡，并针对不同的用例。
 
-![image](../pic/WhatIsFlink/api-stack.png)
+![image](./pic/WhatIsFlink/api-stack.png)
 
 我们简要介绍每个API，讨论它的应用程序，并展示一个代码示例。
 ### 2.2.1 ProcessFunctions

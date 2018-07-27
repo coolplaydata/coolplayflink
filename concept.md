@@ -1,6 +1,6 @@
 * [Flink是什么](./doc/what-is-flink.md)
   * Streaming
-    * [简介](./doc/what-is-flink.md)
+    * 简介
     * [Spark Streaming vs flink](./doc/flink-vs-sparkstreaming.md)
     * Stream-source
     * Stream-sink

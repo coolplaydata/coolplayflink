@@ -2,7 +2,8 @@
   * Streaming
     * 简介
     * [Spark Streaming vs flink](./doc/flink-vs-sparkstreaming.md)
-    * Stream-source
+    * [Flink CEP 官网翻译](doc/FlinkCEP官网翻译.md)
+    * [Flink CEP案例简介](doc/Flink%20CEP案例.md)
     * Stream-sink
     * Stream-window
     * Stream-windowfunction

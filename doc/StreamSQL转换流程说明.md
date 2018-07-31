@@ -1,5 +1,5 @@
-######StreamSQL转换流程主要是环境准备，DataStream注册，SQL评估，Table转换四部分内容。
-####一. 环境准备
+###### StreamSQL转换流程主要是环境准备，DataStream注册，SQL评估，Table转换四部分内容。
+#### 一. 环境准备
 Flink程序的运行，通常我们都会设置程序执行环境StreamExecutionEnvironment，如standalone模式的LocalStreamEnvironment 或者提交到cluster执行的RemoteStreamEnvironment。而StreamSQL的运行则依赖StreamTableEnvironment，StreamTableEnvironment(继承TableEnvironment)创建代码：  
 ```scala
 val env:StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment  
@@ -13,7 +13,7 @@ new StreamTableEnvironment(executionEnvironment,new TableConfig())
 
 SqlParser.Config，SqlOperatorTable实际在TableEnvironment中FrameConfig的时候新创建的，Planner使用的就是就是从FrameConfig获取。  
 
-####二. DataStream注册
+#### 二. DataStream注册
  以StreamTableEnvironment(继承TableEnvironment)的registerDataStream为例，该方法是将DataStream注册到catalog（calcite通过 CatalogReader被validator和planner读取table metadata）。详细的源码内容有：  
  ```scala
  // class StreamTableEnvironment  
@@ -50,7 +50,7 @@ registerDataStreamInternal主要处理：
  ```
   在这里有个两个类，CalciteSchema和SchemaPlus都是calcite的原生API，CalciteSchema是用户自定义schema被calcite使用的包装器类，保存Flink所有注册和转化的表，同时禁用了缓存防止副作用。SchemaPlus是Schema接口的丰富，主要提供用户自定义schema或者table的添加，和访问已经添加成功的tables。SchemaPlus只能被用户使用，但是不能由用户实例化，目的是以只读的方式向用户公开calcite注册的schema额外信息。
   
-####三. SQL评估 
+#### 三. SQL评估 
 sql语句主要通过TableEnvironment的sqlQuery和sqlUpdate函数进行评估，以sqlQuery为例，主要涵盖：  
 
     1.创建执行计划对象FlinkPlannerImpl，该类是Flink自己实现替代calcite的PlannerImpl  
@@ -113,10 +113,10 @@ RelRoot是逻辑执行计划树，含有：
 
 通过RelRoot获取逻辑表达式RelNode，然后封装为LogicalRelNode，是叶子节点类型,接着基于StreamSQL执行环境创建对象Table。  
 
-####四. Table转换 
+#### 四. Table转换 
 Table除数据输出sink操作外，通常的转换操作有两种：1.直接使用Table封装的API进行数据转换，如select,where等算子；2.转换为DataSet或者DataStream，使用DataStream的API进行转换操作。采用转换为DataStream的toAppendStream为例，详细内容有：  
 
-    1.TableConversions将table转化为DataStream或者DataSet，最终调用的是StreamTableEnvironment的translate方法  
+    1.TableConversions将table转化为DataStream或者DataSet，最终调用的是StreamTableEnvironment的translate方法  
     
     2.translate方法的动作包括：  
     

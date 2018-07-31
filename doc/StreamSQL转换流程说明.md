@@ -258,8 +258,8 @@ override deftranslateToPlan(
 ```  
  单逻辑表达式实际就是FlatMap，即DataStreamCalc，通过他对应生成DataStream[CRow]，剩下就是DataStream的核心编程。对应的UM时序图如下：  
  
-![image](../pic/StreamSQL/StreamSQL UML序列图.png)  
-  
+![image](../pic/StreamSQL/StreamSQL_UML序列图.png)  
+
 附： calcite的接口和类列表  
 
     CalciteConfig

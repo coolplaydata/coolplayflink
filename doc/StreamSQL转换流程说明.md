@@ -123,19 +123,20 @@ Table除数据输出sink操作外，通常的转换操作有两种：1.直接使
     	2.1.通过table获取逻辑表达式RelNode  
     	
     	2.2.逻辑表达式是的优化optimize，optimize方法做的是：  
-    	    a. 基于子查询规则，表引用规则采用HepPlanner进行逻辑表达式优化。Calcite实现了两套Planner，HepPlanner和VolcanoPlanner。  
+    	  
+    	        a. 基于子查询规则，表引用规则采用HepPlanner进行逻辑表达式优化。Calcite实现了两套Planner，HepPlanner和VolcanoPlanner。  
     	    
-            b.描述执行计划decorPlan  
+                b.描述执行计划decorPlan  
             
-            c.转化time修饰符，通过RelTimeIndicatorConverter实现  
+                c.转化time修饰符，通过RelTimeIndicatorConverter实现  
             
-            d.正常的逻辑执行计划  
+                d.正常的逻辑执行计划  
             
-            e.优化逻辑执行计划，即VolcanoPlanner,Flink默认采用该Planner  
+                e.优化逻辑执行计划，即VolcanoPlanner,Flink默认采用该Planner  
             
-            f.优化物理执行计划  
+                f.优化物理执行计划  
             
-            g.修饰优化后的计划，然后返回DataStream[CRow]  
+                g.修饰优化后的计划，然后返回DataStream[CRow]  
             
     3.详细代码：
          

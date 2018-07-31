@@ -47,7 +47,7 @@
     * Batch-Join优化
     
   * Flink SQL 
-    * [StreamSQL转换流程说明](./doc/flink-vs-sparkstreaming.md)
+    * [StreamSQL转换流程说明](./doc/StreamSQL转换流程说明.md)
     
     
 * TODO 欢迎继续补充

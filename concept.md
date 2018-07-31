@@ -45,4 +45,9 @@
     * Batch-范围分区优化，计划改写
     * Batch-数据属性
     * Batch-Join优化
+    
+  * Flink SQL 
+    * [StreamSQL转换流程说明](./doc/flink-vs-sparkstreaming.md)
+    
+    
 * TODO 欢迎继续补充

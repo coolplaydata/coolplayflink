@@ -1,10 +1,11 @@
 * [Flink是什么](./doc/what-is-flink.md)
   * Streaming
-    * [简介](./doc/what-is-flink.md)
-    * [Flink安装部署](doc/Flink安装部署.md)
+    * 简介
+    * [Flink安装部署](./doc/Flink安装部署.md)
     * [Spark Streaming vs flink](./doc/flink-vs-sparkstreaming.md)
-    * [Flink CEP 官网翻译](doc/FlinkCEP官网翻译.md)
-    * [Flink CEP案例简介](doc/Flink%20CEP案例.md)
+    * [Flink CEP 官网翻译](./doc/FlinkCEP官网翻译.md)
+    * [Flink CEP案例简介](./doc/Flink%20CEP案例.md)
+    * Stream-source
     * Stream-sink
     * Stream-window
     * Stream-windowfunction
@@ -45,4 +46,9 @@
     * Batch-范围分区优化，计划改写
     * Batch-数据属性
     * Batch-Join优化
+    
+  * Flink SQL 
+    * [StreamSQL转换流程说明](./doc/StreamSQL转换流程说明.md)
+    
+    
 * TODO 欢迎继续补充

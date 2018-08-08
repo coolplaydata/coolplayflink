@@ -23,8 +23,8 @@
 
 
 ####
-Contributor
-[@jeromeheng](https://github.com/jeromeheng)
-[@CrestOfWave](https://github.com/CrestOfWave)
-[@ambition119](https://github.com/ambition119)
+Contributor  
+[@jeromeheng](https://github.com/jeromeheng)  
+[@CrestOfWave](https://github.com/CrestOfWave)  
+[@ambition119](https://github.com/ambition119)  
 

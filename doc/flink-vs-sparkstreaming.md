@@ -14,7 +14,7 @@
 
 >7.Back pressure
 
-### 1. 编程模型对比
+### 1. 框架介绍
 
 #### 1.1 运行角色
 Spark Streaming运行时的角色(standalone模式)主要有：

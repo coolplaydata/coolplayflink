@@ -24,7 +24,7 @@
 
 #####
 
-Contributor(排名不分先后):    
+Contributors(排名不分先后):    
 [@jeromeheng](https://github.com/jeromeheng)  
 [@CrestOfWave](https://github.com/CrestOfWave)  
 [@ambition119](https://github.com/ambition119)  

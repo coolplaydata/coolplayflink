@@ -3,8 +3,6 @@
     * 简介
     * [Flink安装部署](./doc/Flink安装部署.md)
     * [Spark Streaming vs flink](./doc/flink-vs-sparkstreaming.md)
-    * [Flink CEP 官网翻译](./doc/FlinkCEP官网翻译.md)
-    * [Flink CEP案例简介](./doc/Flink%20CEP案例.md)
     * [Flink checkpoint](./doc/FlinkCheckpoint详解.md)
       * [轻量级分布式快照](doc/Flink轻量级分布式快照系统.md)
     * Stream-source
@@ -33,6 +31,8 @@
 
   * CEP
     * 简介
+      * [Flink CEP 官网翻译](./doc/FlinkCEP官网翻译.md)
+      * [Flink CEP案例简介](./doc/Flink%20CEP案例.md)
     * CEP API分析
     * CEP之NFA编译器
     * CEP值模式流与运算符
